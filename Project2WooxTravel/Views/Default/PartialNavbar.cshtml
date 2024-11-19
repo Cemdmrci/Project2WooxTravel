@@ -25,8 +25,8 @@
                         <li><a href="/Default/Index/" class="active">Ana Sayfa</a></li>
                         <li><a href="about.html">Hakkımızda</a></li>
                         <li><a href="deals.html">Rotalar</a></li>
-                        <li><a href="reservation.html">Rezervasyon</a></li>
-                        <li><a href="reservation.html">Kayıt Ol</a></li>
+                        <li><a data-bs-toggle="modal" data-bs-target="#Modal1">Rezervasyon Yap</a></li>
+                        <li><a href="/Register/Index/">Kayıt Ol</a></li>
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>
@@ -37,3 +37,5 @@
         </div>
     </div>
 </header>
+
+@Html.Action("ReservationPopup", "Default")

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing.Printing;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.UI;
-using Project2WooxTravel.Context;
+﻿using Project2WooxTravel.Context;
 using Project2WooxTravel.Entities;
+using System;
+using System.Linq;
+using System.Web.Mvc;
+using PagedList.Mvc;
+using PagedList;
 
 namespace Project2WooxTravel.Controllers
 {
@@ -35,24 +33,10 @@ namespace Project2WooxTravel.Controllers
             return PartialView(values);
         }
 
-        public PartialViewResult PartialCountry(int page = 1)
+        public PartialViewResult PartialCountry(int sayfa = 1)
         {
-            int pageSize = 3;
-            // Varsayılan olarak 10 öğe sayfada gösterilecek
-            var items = context.Destinations // Örneğin, bir tablo ya da liste
-            .OrderBy(x => x.DestinationId)
-                            .Skip((page - 1) * pageSize)
-                            .Take(pageSize)
-                            .ToList();
-            // Toplam öğe sayısını alıyoruz
-            int totalItemCount = context.Destinations.Count();
-
-            // ViewModel veya ViewBag ile gönderiyoruz
-            ViewBag.TotalItemCount = totalItemCount;
-            ViewBag.PageSize = pageSize;
-            ViewBag.CurrentPage = page;
-
-            return PartialView(items);
+            var item = context.Destinations.ToList().ToPagedList(sayfa, 3);
+            return PartialView(item);
         }
 
         public PartialViewResult PartialFooter()
@@ -60,10 +44,28 @@ namespace Project2WooxTravel.Controllers
             return PartialView();
         }
         public ActionResult DestinationDetail(int id)
-            {
+        {
             var values = context.Destinations.Find(id);
             return View(values);
-           
+
+        }
+        public PartialViewResult DestinationDetail2(int id)
+        {
+            var values = context.Destinations.Find(id);
+            return PartialView(values);
+
+        }
+        public PartialViewResult ReservationPopup() 
+        {
+            return PartialView(); 
+        }
+        [HttpPost]
+        public PartialViewResult ReservationPopup(Reservation reservation)
+        {
+            reservation.CreatedAt = DateTime.Now;
+			context.Reservations.Add(reservation);
+			context.SaveChanges();
+			return PartialView("Index");
         }
     }
 }

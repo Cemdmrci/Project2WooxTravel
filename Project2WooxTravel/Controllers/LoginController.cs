@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -31,8 +32,17 @@ namespace Project2WooxTravel.Controllers
             }
             else
             {
-                return View();
+				ViewBag.AlertType = "error";
+				ViewBag.AlertMessage = "Giriş bilgileri hatalı. Tekrar deneyin.";
+				return View();
             }
+           
+        }
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("Index","Login");
         }
     }
 }

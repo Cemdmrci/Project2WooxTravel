@@ -1,6 +1,5 @@
 ﻿<div class="sidebar" data-background-color="dark">
     <div class="sidebar-logo">
-        <!-- Logo Header -->
         <div class="logo-header" data-background-color="dark">
             <a href="~/kaiadmin-lite-1.2.0/index.html" class="logo">
                 <img src="~/kaiadmin-lite-1.2.0/assets/img/kaiadmin/logo_light.svg"
@@ -20,7 +19,6 @@
                 <i class="gg-more-vertical-alt"></i>
             </button>
         </div>
-        <!-- End Logo Header -->
     </div>
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
@@ -48,12 +46,12 @@
                     <div class="collapse" id="category">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="/Category/CategoryList/">
+                                <a href="@Url.Action("CategoryList", "Category")">
                                     <span class="sub-item">Kategori Listesi</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="/Category/AddCategory/">
+                                <a href="@Url.Action("CreateCategory", "Category")">
                                     <span class="sub-item">Kategori Ekle</span>
                                 </a>
                             </li>
@@ -69,12 +67,12 @@
                     <div class="collapse" id="destination">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="/Destination/DestinationList/">
+                                <a href="@Url.Action("DestinationList", "Destination")">
                                     <span class="sub-item">Destinasyon Listesi</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="/Destination/AddDestination/">
+                                <a href="@Url.Action("CreateDestination", "Destination")">
                                     <span class="sub-item">Destinasyon Ekle</span>
                                 </a>
                             </li>
@@ -90,7 +88,7 @@
                     <div class="collapse" id="reservation">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="/Reservation/ReservationList/">
+                                <a href="@Url.Action("ReservationList", "Reservation")">
                                     <span class="sub-item">Rezervasyon Listesi</span>
                                 </a>
                             </li>
@@ -117,6 +115,66 @@
                        aria-expanded="false">
                         <i class="fas fa-paper-plane"></i>
                         <p>Gönderilen Mesajlar</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Admin/Statistic/Index/"
+                       class="collapsed"
+                       aria-expanded="false">
+                        <i class="fas fa-paper-plane"></i>
+                        <p>İstatistikler</p>
+                    </a>
+                </li>
+                <li class="nav-section">
+                    <span class="sidebar-mini-icon">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </span>
+                    <h4 class="text-section">Grafikler</h4>
+                </li>
+                <li class="nav-item">
+                    <a href="/Admin/Chart/Line/"
+                       class="collapsed"
+                       aria-expanded="false">
+                        <i class="fas fa-chart-line"></i>
+                        <p>Çizgi Grafiği</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Admin/Chart/Bar/"
+                       class="collapsed"
+                       aria-expanded="false">
+                        <i class="fas fa-chart-area"></i>
+                        <p>Bar Grafiği</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Admin/Chart/Pie/"
+                       class="collapsed"
+                       aria-expanded="false">
+                        <i class="fas fa-chart-pie"></i>
+                        <p>Pasta Grafiği</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Admin/Chart/Doughnut/"
+                       class="collapsed"
+                       aria-expanded="false">
+                        <i class="far fa-circle"></i>
+                        <p>Donut Grafiği</p>
+                    </a>
+                </li>
+                <li class="nav-section">
+                    <span class="sidebar-mini-icon">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </span>
+                    <h4 class="text-section">Ödeme Yöntemi</h4>
+                </li>
+                <li class="nav-item">
+                    <a href="/Admin/CreditCard/Index/"
+                       class="collapsed"
+                       aria-expanded="false">
+                        <i class="fas fa-credit-card"></i>
+                        <p>Kredi Kartı</p>
                     </a>
                 </li>
             </ul>

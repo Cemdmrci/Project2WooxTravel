@@ -1,0 +1,95 @@
+﻿﻿@model Project2WooxTravel.Entities.Reservation
+
+<div class="modal fade" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="mb-3"> Rezervasyon Oluştur </h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="reservationForm" method="post" action="/Default/ReservationPopup/">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" style="color: black">Ad</label>
+                                    <input type="text" class="form-control" name="Name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" style="color: black">Soyad</label>
+                                    <input type="text" class="form-control" name="Surname" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" style="color: black">Telefon Numarası</label>
+                                    <input type="text" class="form-control" name="Phone" id="phoneInput" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" style="color: black">Kişi Sayısı</label>
+                                    <input type="number" class="form-control" name="PersonCount" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" style="color: black">Başlangıç Tarihi</label>
+                                    <input type="date" class="form-control" name="ReservationStartDate" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" style="color: black">Bitiş Tarihi</label>
+                                    <input type="date" class="form-control" name="ReservationEndDate" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" style="color: black">Açıklama</label>
+                            <textarea class="form-control" name="Description" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                        <button id="reservationCreate" type="submit" class="btn btn-primary" style="background-color: #22b3c1; color: white; border: none; font-weight: bold ">Oluştur</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("reservationForm").onsubmit = function (event) {
+        event.preventDefault();
+
+        fetch("/Default/ReservationPopup/", {
+            method: "POST",
+            body: new FormData(this)
+        })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = "/Default/Index";
+                } else {
+                    // Hata mesajını response'dan al
+                    response.text().then(text => {
+                        alert("Rezervasyon sırasında bir hata oluştu: " + text);
+                    });
+                }
+            })
+            .catch(error => {
+                // Catch bloğunda hata mesajını yazdır
+                console.error("Hata:", error);
+                alert("Rezervasyon sırasında bir hata oluştu: " + error.message);
+            });
+    };
+</script>
+
+
+
+
+

@@ -16,5 +16,10 @@ namespace Project2WooxTravel.Entities
         public string Description { get; set; }
         public decimal Price { get; set; }
         public int Capacity { get; set; }
+
+        internal static object ToList()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

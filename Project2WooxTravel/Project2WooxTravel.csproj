@@ -58,6 +58,12 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -121,9 +127,12 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminLayoutController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CreditCardController.cs" />
     <Compile Include="Areas\Admin\Controllers\DestinationController.cs" />
     <Compile Include="Areas\Admin\Controllers\MessageController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProfileController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ChartController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StatisticController.cs" />
     <Compile Include="Context\TravelContext.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\ErrorPagesController.cs" />
@@ -146,6 +155,10 @@
     <Compile Include="Migrations\202410221744558_mig5.cs" />
     <Compile Include="Migrations\202410221744558_mig5.Designer.cs">
       <DependentUpon>202410221744558_mig5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202411190846187_mig6.cs" />
+    <Compile Include="Migrations\202411190846187_mig6.Designer.cs">
+      <DependentUpon>202411190846187_mig6.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -170,6 +183,13 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="DatPayment-master\dist\css\DatPayment.css" />
+    <Content Include="DatPayment-master\dist\js\DatPayment.js" />
+    <Content Include="DatPayment-master\examples\example.css" />
+    <Content Include="DatPayment-master\examples\simple.html" />
+    <Content Include="DatPayment-master\Gulpfile.js" />
+    <Content Include="DatPayment-master\src\js\DatPayment.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -620,6 +640,22 @@
     <Content Include="Areas\Admin\Views\Message\Inbox.cshtml" />
     <Content Include="Areas\Admin\Views\Message\Sendbox.cshtml" />
     <Content Include="Areas\Admin\Views\Message\SendMessage.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminLayout\PartialMessageNavbar.cshtml" />
+    <Content Include="Areas\Admin\Views\CreditCard\Index.cshtml" />
+    <Content Include="DatPayment-master\.gitignore" />
+    <Content Include="DatPayment-master\bower.json" />
+    <Content Include="DatPayment-master\LICENSE" />
+    <Content Include="DatPayment-master\package.json" />
+    <Content Include="DatPayment-master\README.md" />
+    <Content Include="DatPayment-master\src\sass\DatPayment.scss" />
+    <Content Include="DatPayment-master\src\sass\_mixin.scss" />
+    <Content Include="DatPayment-master\src\sass\_variables.scss" />
+    <Content Include="Areas\Admin\Views\Chart\Line.cshtml" />
+    <Content Include="Areas\Admin\Views\Chart\Bar.cshtml" />
+    <Content Include="Areas\Admin\Views\Chart\Pie.cshtml" />
+    <Content Include="Areas\Admin\Views\Chart\Doughnut.cshtml" />
+    <Content Include="Areas\Admin\Views\Statistic\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminLayout\DestinationNavbar.cshtml" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
@@ -740,13 +776,17 @@
     <Content Include="Views\Default\PartialFooter.cshtml" />
     <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.1.min.map" />
+    <Content Include="Views\Default\DestinationDetail2.cshtml" />
     <Content Include="Views\Default\DestinationDetail.cshtml" />
+    <Content Include="Views\Default\ReservationPopup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Default\" />
     <Folder Include="Areas\Admin\Views\Login\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Admin\Views\Statics\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -758,6 +798,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202410221744558_mig5.resx">
       <DependentUpon>202410221744558_mig5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202411190846187_mig6.resx">
+      <DependentUpon>202411190846187_mig6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

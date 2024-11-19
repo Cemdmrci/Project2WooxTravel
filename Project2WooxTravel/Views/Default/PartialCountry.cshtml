@@ -1,4 +1,7 @@
-﻿@model List<Project2WooxTravel.Entities.Destination>
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<Project2WooxTravel.Entities.Destination>
+<link href="~/Content/PagedList.css" rel="stylesheet" />
 <div class="visit-country">
     <div class="container">
         <div class="row">
@@ -30,7 +33,10 @@
                                                 <div class="main-button">
                                                     <a href="/Default/DestinationDetail/@item.DestinationId">Tur Detaylarını Gör</a>
                                                 </div>
-                                                <p>@item.Description.Substring(0,50)</p>
+                                                <p class="description" id="description-@item.DestinationId">
+                                                    @item.Description.Substring(0, 100)...
+                                                    <a href="javascript:void(0);" class="read-more" data-full-description="@item.Description" data-short-description="@item.Description.Substring(0, 100)">Devamını Oku</a>
+                                                </p>
                                                 <ul class="info">
                                                     <li><i class="fa fa-user"></i>@item.DayNight Gün - @(item.DayNight-1) Gece</li>
                                                     <li><i class="fa fa-globe"></i> @item.Price ₺</li>
@@ -46,10 +52,35 @@
                             </div>
                         }
                     </div>
+                    @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
 </div>
+<script type="text/javascript">
 
+
+    function bindReadMoreLinks() {
+        const readMoreLinks = document.querySelectorAll('.read-more');
+        readMoreLinks.forEach(function (link) {
+            link.addEventListener('click', function () {
+                const fullDescription = this.getAttribute('data-full-description');
+                const shortDescription = this.getAttribute('data-short-description');
+
+                if (this.innerText === "Devamını Oku") {
+                    this.parentElement.innerHTML = fullDescription + ' <a href="javascript:void(0);" class="read-more" data-short-description="' + shortDescription + '" data-full-description="' + fullDescription + '">Daha Az Göster</a>';
+                    bindReadMoreLinks();
+                } else {
+                    this.parentElement.innerHTML = shortDescription + '... <a href="javascript:void(0);" class="read-more" data-short-description="' + shortDescription + '" data-full-description="' + fullDescription + '">Devamını Oku</a>';
+                    bindReadMoreLinks();
+                }
+            });
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        bindReadMoreLinks();
+    });
+</script>

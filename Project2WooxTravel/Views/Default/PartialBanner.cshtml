@@ -1,16 +1,23 @@
 ﻿@model List<Project2WooxTravel.Entities.Destination>
+
 <section id="section-1">
     <div class="content-slider">
-        <input type="radio" id="banner1" class="sec-1-input" name="banner" checked>
+        @{ int index = 1; }
+        @foreach (var destination in Model)
+        {
+            <input type="radio" id="banner@{@index}" class="sec-1-input" name="banner" @(index == 1 ? "checked" : "")>
+            index++;
+        }
+
         <div class="slider">
-            @foreach (var item in Model)
+            @{ index = 1; }
+            @foreach (var destination in Model)
             {
-                <div id="top-banner-1" class="banner">
+                <div id="top-banner-@{@index}" class="banner" style="background: url('@destination.ImageUrl') no-repeat center center; background-size: cover;">
                     <div class="banner-inner-wrapper header-text">
                         <div class="main-caption">
-                            <h2>@item.City/@item.Country</h2>
-                            <h1>@item.Title</h1>
-                            <div class="border-button"><a href="about.html">Go There</a></div>
+                            <h2>@destination.City/@destination.Country</h2>
+                            <h1>@destination.Title</h1>
                         </div>
                         <div class="container">
                             <div class="row">
@@ -18,20 +25,20 @@
                                     <div class="more-info">
                                         <div class="row">
                                             <div class="col-lg-3 col-sm-6 col-6">
-                                                <i class="fa fa-user"></i>
-                                                <h4><span>Kapasite:</span><br>@item.Capacity</h4>
+                                                <i class="fa fa-users"></i>
+                                                <h4><span>Kapasite:</span><br>@destination.Capacity</h4>
                                             </div>
                                             <div class="col-lg-3 col-sm-6 col-6">
-                                                <i class="fa fa-globe"></i>
-                                                <h4><span>Gün-Gece:</span><br>@item.DayNight Gün - @(item.DayNight-1) Gece</h4>
+                                                <i class="fa fa-calendar-days"></i>
+                                                <h4><span>Gün-Gece:</span><br>@destination.DayNight Gün - @(destination.DayNight-1) Gece</h4>
                                             </div>
                                             <div class="col-lg-3 col-sm-6 col-6">
-                                                <i class="fa fa-home"></i>
-                                                <h4><span>Ücret:</span><br>@item.Price</h4>
+                                                <i class="fa fa-money-bill"></i>
+                                                <h4><span>Ücret:</span><br>@destination.Price.ToString("C", new System.Globalization.CultureInfo("tr-TR"))</h4>
                                             </div>
                                             <div class="col-lg-3 col-sm-6 col-6">
                                                 <div class="main-button">
-                                                    <a href="/Default/Index/">İncele</a>
+                                                    <a href="/Default/DestinationDetail/@destination.DestinationId">İncele</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -41,15 +48,18 @@
                         </div>
                     </div>
                 </div>
+                index++;
             }
         </div>
+
         <nav>
             <div class="controls">
-                <label for="banner1"><span class="progressbar"><span class="progressbar-fill"></span></span><span class="text">1</span></label>
-                <label for="banner2"><span class="progressbar"><span class="progressbar-fill"></span></span><span class="text">2</span></label>
-                <label for="banner3"><span class="progressbar"><span class="progressbar-fill"></span></span><span class="text">3</span></label>
-                <label for="banner4"><span class="progressbar"><span class="progressbar-fill"></span></span><span class="text">4</span></label>
-
+                @{ index = 1; }
+                @foreach (var destination in Model)
+                {
+                    <label for="banner@{@index}"><span class="progressbar"><span class="progressbar-fill"></span></span><span class="text">@index</span></label>
+                    index++;
+                }
             </div>
         </nav>
     </div>
