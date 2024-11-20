@@ -778,7 +778,6 @@
     <Content Include="Scripts\jquery-3.7.1.min.map" />
     <Content Include="Views\Default\DestinationDetail2.cshtml" />
     <Content Include="Views\Default\DestinationDetail.cshtml" />
-    <Content Include="Views\Default\ReservationPopup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
