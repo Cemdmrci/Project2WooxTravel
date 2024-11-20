@@ -1,4 +1,4 @@
-/*
+﻿/*
 
 TemplateMo 580 Woox Travel
 
@@ -708,6 +708,27 @@ Header Style
 Banner Style
 --------------------------------------------- 
 */
+
+.banner {
+    position: relative;
+    overflow: hidden;
+}
+
+    .banner::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Siyah yarý saydam katman */
+        z-index: 1;
+    }
+
+.banner-inner-wrapper {
+    position: relative;
+    z-index: 2; /* Katman yazýnýn üzerinde kalmasýný saðlar */
+}
 
 #section-1 {
   margin-top: 0px;

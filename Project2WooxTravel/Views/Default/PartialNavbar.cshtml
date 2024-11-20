@@ -114,6 +114,18 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
+        new Cleave('#phoneInput', {
+            delimiters: [' (', ') ', ' ', ' ', ' '],
+            blocks: [1, 3, 3, 2, 2],
+            numericOnly: true
+        });
+    });
+
+</script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
         const reservationForm = document.querySelector('form[action="/Default/ReservationModal/"]');
 
         reservationForm.addEventListener("submit", function (event) {
