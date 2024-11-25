@@ -1,4 +1,5 @@
 🛫 WoOx Travel
+
 Projeye Genel Bakış
 👤 Kullanıcı Arayüzü: Sayfa açıldığında kullanıcıyı -son eklenen 4 destinasyonun veritabanından dinamik olarak geldiği- bir slider/banner karşılıyor. Otomatik olarak değişen bannerlar arasında isterse kullanıcı da manuel olarak geçişler yapabiliyor. Banner üzerinde yer alan 'İncele' butonu aracılığıyla destinasyonun detay sayfasına gidebilme imkanı da bulunmaktadır. Slider/banner'ın hemen altında yer alan alanda ise tüm destinasyonların bir listesi yer almaktadır. Burada her sayfada 5 destinasyon olacak şekilde bir Sayfalama Yapısı kullanılmıştır. Son olarak ise kullanıcı isterse navbar üzerinde bulunan 'Rezervasyon Yap' butonuna tıklayıp karşısına çıkan 'Rezervasyon Oluşturma Pop-Up'ı aracılığıyla rezervasyon oluşturabilir. Bu pop-up'ı detaylıca incelememiz gerekirse kullanıcının bilgilerini girdiği ve kullanıcıya kolaylık sağlamak adına telefon numarası alanının giriş değerlerinin maskelenerek 0(000) 000 00 00 formatına getirildiği bir pop-up'tır.
 
