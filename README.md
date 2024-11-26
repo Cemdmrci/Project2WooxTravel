@@ -7,6 +7,7 @@ Projeye Genel Bakış
 🖱️ Admin Paneli: Site yöneticileri için geliştirilmiş olan bu panel üzerinde yöneticiler, onlar için planlanan işlemler sınırında sistemin her noktasına dokunabilmektedirler. Kullanıcı arayüzünün footer kısmında bulunan link aracılığıyla ulaşabildikleri 'Admin Giriş Ekranı' aracılığıyla yöneticiler kendi kullanıcı adı ve şifrelerini girerek admin paneline erişebilirler. Bilgilerini doğru girmedikleri takdirde ekranın sağ üst köşesinde 5 saniye duracak şekilde ayarlanan bir error sweetalert ile bilgilendiriliyorlar. Bilgilerini doğru bir şekilde girdikleri senaryoda ise karşılarına admin paneli Dashboard ekranı çıkmaktadır. Yönetici bu panelde sol menü yardımıyla yapmak istediği işlemleri gerçekleştirebilmektedir. İsterse Kategoriler, Destinasyonlar veya Rezervasyonlar üzerinde CRUD işlemleri yapabilirken isterse de 4 adet grafik sayesinde (Line, Bar, Pie ve Doughnut Grafikleri) sistemdeki datalarla hazırlanmış bilgileri görüntüleyebilmektedir. Ayrıca yöneticilere bu panel üzerinden Mesajlaşabilme İmkanı da sunulmuştur.
 
 Kullanılan Teknolojiler ve Uygulamalar
+
 ✅ ASP.NET MVC
 
 ✅ Entity Framework
